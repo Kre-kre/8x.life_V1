@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="8x.life — choose your next move." />
+    <title>8x.life — Choose wisely</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="8x.life home">8x<span>.</span>life</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <i></i></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        <a href="#manifesto">Manifesto</a>
+        <a href="#builds">The builds</a>
+        <a href="#rules">The rules</a>
+        <button class="text-link network-trigger" type="button">Join the network ↗</button>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> A place for people who make things move</p>
+          <h1>Find the work<br />worth <em>playing</em><br />for.</h1>
+          <p class="hero-intro">8x is a platform for people with uncommon drive. Different paths, shared appetite: make work that changes what comes next.</p>
+          <div class="button-row">
+            <a class="button button-dark" href="https://8x.careers" target="_blank" rel="noreferrer">Join the platform <b>↗</b></a>
+            <button class="button button-line network-trigger" type="button">Join the network <b>+</b></button>
+          </div>
+        </div>
+        <div class="hero-world" aria-label="An abstract dimensional world">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="sphere sphere-back"></div><div class="sphere sphere-front"></div>
+          <div class="world-card world-card-one"><small>01 / THE FIELD</small><strong>Make<br />your move.</strong></div>
+          <div class="world-card world-card-two"><span>✦</span><small>Potential<br />in motion</small></div>
+          <div class="hero-caption">Scroll to enter <span>↓</span></div>
+        </div>
+      </section>
+
+      <section class="game-intro section-pad" id="life">
+        <div class="section-meta"><span>01</span><span>Life, in motion</span></div>
+        <div class="game-title"><p class="eyebrow">No stock answers. No single route.</p><h2>8x.life<br /><em>is a game.</em></h2><p>Not because it is easy. Because it asks you to see the board, choose a direction, and make something happen.</p></div>
+        <div class="ticker" aria-label="Moments from life at 8x"><div class="ticker-track" id="media-track"></div></div>
+        <p class="micro-note">A living edit of teams, tables, ideas and imperfect in-between moments. <span>Drag / hover to pause.</span></p>
+      </section>
+
+      <section class="manifesto-section section-pad" id="manifesto">
+        <div class="section-meta"><span>02</span><span>The manifesto</span></div>
+        <div class="manifesto-layout">
+          <div class="manifesto-lead"><h2>We believe<br />a career should<br /><em>compound.</em></h2><p>Not just in title. In range, judgement, people and the problems you learn to take on.</p></div>
+          <article class="manifesto-paper" aria-label="8x manifesto document">
+            <header><span>8x / working paper</span><span>001—006</span></header>
+            <div class="paper-progress"><i></i></div>
+            <div class="paper-scroll" id="manifesto-scroll">
+              <p class="paper-kicker">A note on how we work</p>
+              <h3>Ambition is not a job title.</h3>
+              <p>It is the decision to keep learning the shape of a problem until you can move it. It is care for the finish, and nerve at the beginning.</p>
+              <hr />
+              <h3>We make room for agency.</h3>
+              <p>The point is not to wait for a perfect brief. The point is to notice what matters, bring a point of view, and own the next useful move.</p>
+              <hr />
+              <h3>Great work leaves a trail.</h3>
+              <p>In people becoming sharper. In teams becoming braver. In things that are now possible because someone cared enough to make them real.</p>
+              <p class="paper-signoff">— 8x, for the people still choosing.</p>
+            </div>
+            <footer><span>Keep scrolling</span><span>8x.life</span></footer>
+          </article>
+        </div>
+      </section>
+
+      <section class="wise-section section-pad" id="wise">
+        <div class="section-meta"><span>03</span><span>The people</span></div>
+        <div class="wise-heading"><h2>The <em>wise<br />ones.</em></h2><p>People with taste, instincts, questions and enough generosity to make the whole group better.</p></div>
+        <div class="team-grid" id="team-grid"></div>
+        <p class="section-footnote">Less a corporate org chart. More a collection of people worth learning from.</p>
+      </section>
+
+      <section class="builds-section section-pad" id="builds">
+        <div class="section-meta"><span>04</span><span>The connective tissue</span></div>
+        <div class="builds-heading"><h2>What we<br /><em>build.</em></h2><p>Different expressions of one idea: make the work around us more possible, more human, more alive.</p></div>
+        <div class="build-deck" id="build-deck"></div>
+        <div class="deck-hint"><span>←</span> pull a card <span>→</span></div>
+      </section>
+
+      <section class="hero-selector section-pad" id="hero-selector">
+        <div class="selector-copy"><div class="section-meta"><span>05</span><span>Choose a character</span></div><h2>You can be<br />the <em>hero.</em></h2><p>There is no perfect profile. But there are ways of showing up that make more possible.</p><p class="selector-prompt">What do you bring to the table?</p></div>
+        <div class="traits" id="traits" role="list"></div>
+        <div class="selected-trait" aria-live="polite"><span>Selected trait</span><strong id="selected-trait">Choose a card</strong><p id="selected-description">There’s no right answer. The signal is whether you recognise yourself in the work.</p></div>
+      </section>
+
+      <section class="rules-section section-pad" id="rules">
+        <div class="rules-top"><div class="section-meta"><span>06</span><span>Read before playing</span></div><h2>But, every game<br />has <em>rules.</em></h2><p>This is an honest part. The freedom here is real. So is the expectation that you’ll know what to do with it.</p></div>
+        <div class="rules-list" id="rules-list"></div>
+        <p class="rules-note">If this gives you a useful kind of pause, we respect that too.</p>
+      </section>
+
+      <section class="final-cta section-pad">
+        <div class="final-orbit"></div><p class="eyebrow">07 / The next move is yours</p><h2>Your<br /><em>move.</em></h2><p class="choose">Choose wisely.</p>
+        <div class="final-choices"><a href="https://8x.careers" target="_blank" rel="noreferrer"><span>01</span><strong>Join the platform</strong><b>↗</b><small>Explore opportunities and make an impact.</small></a><button class="network-trigger" type="button"><span>02</span><strong>Join the network</strong><b>+</b><small>Find a doorway into the wider 8x world.</small></button></div>
+        <footer><a href="#top">8x.life ↑</a><span>Choose a thing worth making real.</span><a href="https://8x.careers" target="_blank" rel="noreferrer">Careers ↗</a></footer>
+      </section>
+    </main>
+    <dialog class="network-dialog" id="network-dialog" aria-label="Join the 8x network">
+      <button class="close-dialog" aria-label="Close network deck" type="button">×</button>
+      <div class="network-title"><p class="eyebrow">The network / choose an opening</p><h2>There is more<br />than <em>one way in.</em></h2><p>Start with the doorway that makes sense for you. The rest can follow.</p></div>
+      <div class="network-cards" id="network-cards"></div>
+      <p class="network-foot">Press escape to return to the field.</p>
+    </dialog>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
