@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="8x.life — choose your next move." />
+    <title>8x.life — Choose wisely</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      /* Keep the page usable when opened directly from a local folder. */
+      .section-pad, .hero-copy { opacity: 1 !important; transform: none !important; }
+
+      /* Second-pass art direction: brighter, more tactile and less orderly. */
+      .hero:after { content: '✳  NO STRAIGHT LINES'; position: absolute; right: 4vw; top: 13vh; color: #28336f; font: 10px var(--mono); letter-spacing: .08em; transform: rotate(8deg); }
+      .chaos-tag { z-index: 4; position: absolute; border: 1px solid currentColor; padding: 7px 9px; font: 9px/1.12 var(--mono); letter-spacing: .03em; text-transform: uppercase; background: #f4ede0; box-shadow: 3px 3px 0 rgba(20, 27, 37, .18); }
+      .tag-one { right: 0; top: 12%; color: #9c3e31; transform: rotate(-9deg); }.tag-two { left: -2%; top: 51%; color: #2a5980; transform: rotate(12deg); }
+      .manifesto-section { background: #174651; }.wise-section { background: #d6e3e1; }.builds-section { background: #24205e; }.hero-selector { background: #f0b193; }.rules-section { background: #bc4d38; }.final-cta { background: #eee8d8; }
+      .wise-heading { grid-template-columns: 1.1fr 320px; }.team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 920px; margin-left: auto; }.team-card { height: 500px; color: inherit; text-decoration: none; }.team-card:nth-child(2) { margin-top: 86px; }.team-card:before { content: '08X'; position: absolute; z-index: 2; right: -14px; top: 18px; color: rgba(255,255,255,.66); font: 100px/.8 var(--sans); letter-spacing: -9px; }.team-card img { filter: contrast(1.06) saturate(.78); mix-blend-mode: normal; }.team-card:after { background: linear-gradient(0deg, rgba(11,24,39,.86), transparent 62%), var(--tint); mix-blend-mode: color; }.team-card-copy strong b { font-size: 16px; font-weight: 400; }
+      .build-deck { gap: 10px; }.build-card { color: #f7f1e6; text-decoration: none; min-height: 450px; }.build-card.sales { background: #bd4f3d; }.build-card:hover,.build-card:focus { color: #f7f1e6; }.build-card h3 { max-width: 190px; }
+      .hero-selector { display: grid; grid-template-columns: .58fr 1.42fr; gap: 5vw; }.character-machine { min-width: 0; background: #1b2357; color: #fff8eb; border: 1px solid #1b2357; box-shadow: 12px 12px 0 rgba(24, 30, 54, .25); }.machine-top { padding: 12px 15px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.58); font: 9px var(--mono); text-transform: uppercase; letter-spacing: .07em; }.character-shell { position: relative; min-height: 510px; overflow: hidden; background: radial-gradient(circle at 52% 48%, #6a61c5 0 4%, #3b3e92 24%, #1b2357 64%); }.character-shell:before { content: ''; position: absolute; inset: 11%; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; transform: rotate(-32deg); }.character-orbit { position: absolute; width: 130%; height: 38%; left: -15%; top: 30%; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; transform: rotate(-26deg); }.character-mark { position: absolute; inset: 0; display: grid; place-content: center; color: #f4ad91; font: 210px/.65 var(--sans); letter-spacing: -24px; transform: rotate(-7deg); }.character-mark span { font-family: var(--serif); font-weight: 400; }.traits { position: absolute; inset: 0; display: block; }.trait-card { position: absolute; width: 145px; min-height: 79px; padding: 9px 10px; color: #1b2357; background: #f6eee3; border: 1px solid #1b2357; box-shadow: 4px 4px 0 rgba(0,0,0,.18); transform: rotate(var(--r)); }.trait-card:hover,.trait-card.is-selected { background: #f0aa8e; color: #1b2357; transform: translateY(-5px) rotate(var(--r)); }.trait-card strong { font-size: 23px; letter-spacing: -1.6px; }.trait-card b { position: absolute; right: 9px; bottom: 6px; font-size: 18px; }.trait-card:nth-child(1) { left: 5%; top: 9%; --r: -8deg; }.trait-card:nth-child(2) { right: 4%; top: 13%; --r: 9deg; }.trait-card:nth-child(3) { left: 1%; top: 42%; --r: 4deg; }.trait-card:nth-child(4) { right: 0; top: 47%; --r: -7deg; }.trait-card:nth-child(5) { left: 11%; bottom: 7%; --r: 7deg; }.trait-card:nth-child(6) { right: 12%; bottom: 7%; --r: -5deg; }.selected-trait { max-width: none; margin: 0; min-height: 115px; padding: 17px; display: grid; grid-template-columns: 145px 1fr; column-gap: 15px; align-items: start; background: #f6eee3; color: #1b2357; border-top: 1px solid #1b2357; }.selected-trait span { grid-column: 1; }.selected-trait strong { grid-column: 1; font-size: 29px; margin: 8px 0 0; }.selected-trait p { grid-column: 2; grid-row: 1 / span 2; margin-top: 3px; max-width: 350px; }
+      .network-cards { grid-template-columns: repeat(2, 1fr); }.network-card.orange { background: #efaa88; }.network-dialog { background: #1e225d; }.network-card { min-height: 210px; }.network-card h3 { font-size: 37px; }
+      @media (max-width: 900px) { .team-grid { max-width: none; }.team-card { height: 390px; }.character-machine { width: 100%; }.hero-selector { grid-template-columns: 1fr; }.network-cards { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 560px) { .hero:after, .chaos-tag { display: none; }.team-card { height: 300px; }.team-card:nth-child(2) { margin-top: 42px; }.team-card:before { font-size: 65px; }.character-shell { min-height: 455px; }.character-mark { font-size: 175px; }.trait-card { width: 118px; min-height: 66px; }.trait-card strong { font-size: 19px; }.trait-card:nth-child(1) { left: 3%; }.trait-card:nth-child(2) { right: 3%; }.trait-card:nth-child(3) { left: -2%; }.trait-card:nth-child(4) { right: -2%; }.trait-card:nth-child(5) { left: 3%; }.trait-card:nth-child(6) { right: 3%; }.selected-trait { grid-template-columns: 1fr; min-height: 145px; }.selected-trait strong, .selected-trait p, .selected-trait span { grid-column: 1; grid-row: auto; }.selected-trait p { margin: 9px 0 0; }.network-cards { grid-template-columns: 1fr; }.build-card { min-width: 75vw; }.build-deck { width: calc(100% + 10vw); } }
+    </style>
+    <style>
+      /* Reference-led redesign: an editorial field, not a polished product dashboard. */
+      .site-header { padding: 24px 4.8vw; border-bottom: 1px solid rgba(20,25,32,.4); }
+      .wordmark { font-size: 31px; letter-spacing: -2.8px; }
+      .hero { grid-template-columns: 1.2fr .8fr; min-height: 720px; padding: 145px 4.8vw 44px; gap: 1vw; background:
+        linear-gradient(rgba(18,26,30,.1) 1px, transparent 1px), linear-gradient(90deg,rgba(18,26,30,.1) 1px, transparent 1px),
+        radial-gradient(circle at 82% 62%,#bdc9e4 0 8%,rgba(188,201,228,.28) 24%,transparent 43%), #f1eee5; background-size: 100% 82px, 24.7% 100%, auto; }
+      .hero:before { display: none; }.hero:after { content: 'SCROLL TO SEE WHAT WE MEAN  ↓'; right: 5vw; top: auto; bottom: 20px; transform: none; color: #16191f; }
+      .hero-copy { align-self: start; padding-top: 14px; max-width: none; }.hero-copy .eyebrow { margin-bottom: 42px; }
+      .hero h1 { max-width: 920px; font-size: clamp(72px,9.25vw,160px); line-height: .86; letter-spacing: -.095em; text-transform: lowercase; position: relative; }
+      .hero h1 em { position: relative; font-family: var(--sans); font-style: normal; }.hero h1 em:after { content: ''; position: absolute; z-index: -1; left: -11%; top: -16%; width: 122%; height: 137%; border: 4px solid #4b50d8; border-radius: 51% 47% 48% 52%; transform: rotate(-7deg); }
+      .hero-intro { max-width: 385px; margin: 30px 0 24px; font-size: 16px; }.hero-world { align-self: stretch; height: auto; min-height: 500px; perspective: none; overflow: visible; }
+      .sphere,.orbit,.world-card { display: none; }.hero-photo { z-index: 2; position: absolute; overflow: hidden; margin: 0; background: #111; border: 1px solid #171b20; box-shadow: 8px 8px 0 #191d23; }.hero-photo img { display:block; width:100%; height:100%; object-fit:cover; filter: contrast(1.04) saturate(.85); }
+      .hero-photo-jaka { width: 53%; height: 74%; left: 0; bottom: -5px; transform: rotate(-3deg); }.hero-photo-theo { width: 47%; height: 53%; right: -3%; bottom: 4%; transform: rotate(5deg); }.hero-photo-theo img { object-position: 46% center; }
+      .hero-world .chaos-tag { z-index: 5; }.tag-one { top: 5%; right: 7%; background:#f3eddf; }.tag-two { left: -7%; top: 58%; background:#f3eddf; }.hero-caption { display:none; }
+      .game-intro { background: #11151b; color: #f6f1e7; border-top: 1px solid #111; }.game-intro .game-title { grid-template-columns: .72fr 1.34fr .72fr; }.game-intro .game-title h2 { font-size: clamp(73px,9.6vw,156px); }.game-intro .micro-note { color: #c7c8c4; }.game-intro .micro-note span { color: #b5b4ff; }.ticker { border-top: 1px solid rgba(255,255,255,.45); padding-top: 14px; }
+      .manifesto-section { background: #efede4; color: #151a21; }.manifesto-section .manifesto-lead p { color: #383f42; }.manifesto-paper { box-shadow: 12px 12px 0 #353fe0; }.wise-section { background: #353fe0; color: #f7f2e9; }.wise-heading p { color: #f7f2e9; }.team-grid { max-width: none; margin: 0; grid-template-columns: 1.15fr .85fr; }.team-card { height: 550px; }.team-card:nth-child(2) { margin-top: 125px; }.team-card:before { color:#e8e7fe; }.section-footnote { color:#e9e9ff; }
+      .builds-section { background: #f6efdf; color: #15191f; }.builds-heading p { color: #2f3540; }.build-card { color:#12171d; border:1px solid #15191f; box-shadow:none; min-height:430px; }.build-card:hover,.build-card:focus { color:#12171d; }.platform { background:#babcf0; }.network { background:#d7e5d2; }.ideas { background:#f1c2af; }.build-card.sales { background:#f4e98c; }.build-card i,.build-card i:before,.build-card i:after { border-color:rgba(20,25,32,.52); }.build-card:nth-child(2) { transform: translateY(58px); }.build-card:nth-child(4) { transform: translateY(28px); }.build-card:nth-child(2):hover,.build-card:nth-child(4):hover { transform: translateY(48px); }
+      .hero-selector { background:#10151d; color:#f5f0e6; }.selector-copy h2 { font-size:clamp(75px,8.6vw,140px); }.selector-copy>p { color:#d6d6d2; }.character-machine { box-shadow: 12px 12px 0 #4451e8; }.rules-section { background:#f15d31; }.final-cta { background:#10151d; color:#f7f1e6; }.final-orbit,.final-orbit:before,.final-orbit:after { border-color:#b5b4ff; }.final-choices a,.final-choices button { color:#f7f1e6; border-color:#f7f1e6; background:transparent; }.final-choices a:hover,.final-choices button:hover { background:#353fe0; }.final-cta footer { border-color:rgba(247,241,230,.45); }.final-cta footer a { color:#f7f1e6; }
+      @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 125px; }.hero-world { min-height: 460px; margin-top: 10px; }.hero h1 { font-size: clamp(73px,13vw,132px); }.hero-photo-jaka { width: 49%; }.hero-photo-theo { width: 44%; }.game-intro .game-title { grid-template-columns: 1fr; }.build-card:nth-child(2),.build-card:nth-child(4) { transform:none; } }
+      @media (max-width: 560px) { .site-header { padding: 18px 5vw; }.wordmark{font-size:26px}.hero { min-height:auto; background-size:100% 55px, 33.333% 100%, auto; }.hero h1 { font-size: clamp(64px,17.5vw,96px); }.hero-copy .eyebrow { margin-bottom:27px; }.hero-world { min-height: 350px; }.hero-photo-jaka { height: 88%; width: 55%; left: 3%; }.hero-photo-theo { height: 57%; width: 50%; right: 0; }.hero h1 em:after { border-width: 3px; }.game-intro { padding-top:72px; }.team-card { height: 340px; }.team-card:nth-child(2) { margin-top:54px; }.build-card:nth-child(2),.build-card:nth-child(4) { transform:none; } }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="8x.life home">8x<span>.</span>life</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <i></i></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        <a href="#manifesto">Manifesto</a>
+        <a href="#builds">The builds</a>
+        <a href="#rules">The rules</a>
+        <button class="text-link network-trigger" type="button">Join the network ↗</button>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span></span> A place for people who make things move</p>
+          <h1>we like people<br />with good <em>weird.</em></h1>
+          <p class="hero-intro">8x is a platform for the people who spot an opening, follow the interesting route, and make something real happen.</p>
+          <div class="button-row">
+            <a class="button button-dark" href="https://8x.careers" target="_blank" rel="noreferrer">Join the platform <b>↗</b></a>
+            <button class="button button-line network-trigger" type="button">Join the network <b>+</b></button>
+          </div>
+        </div>
+        <div class="hero-world" aria-label="An abstract dimensional world">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="sphere sphere-back"></div><div class="sphere sphere-front"></div>
+          <div class="world-card world-card-one"><small>THE FIELD</small><strong>Make<br />your move.</strong></div>
+          <div class="world-card world-card-two"><span>✦</span><small>Very good<br />company</small></div>
+          <figure class="hero-photo hero-photo-jaka"><img src="./assets/jaka-bavdek.jpeg" alt="Jaka Bavdek" /></figure><figure class="hero-photo hero-photo-theo"><img src="./assets/theo-bui.jpeg" alt="Theo Bui" /></figure>
+          <div class="chaos-tag tag-one">MAKE IT WEIRD<br />THEN MAKE IT WORK</div><div class="chaos-tag tag-two">NO AUTOPILOT</div>
+          <div class="hero-caption">Scroll to enter <span>↓</span></div>
+        </div>
+      </section>
+
+      <section class="game-intro section-pad" id="life">
+        <div class="game-title"><p class="eyebrow">No stock answers. No single route.</p><h2>8x.life<br /><em>is a game.</em></h2><p>Not because it is easy. Because it asks you to see the board, choose a direction, and make something happen.</p></div>
+        <div class="ticker" aria-label="Moments from life at 8x"><div class="ticker-track" id="media-track"></div></div>
+        <p class="micro-note">A living edit of teams, tables, ideas and imperfect in-between moments. <span>Drag / hover to pause.</span></p>
+      </section>
+
+      <section class="manifesto-section section-pad" id="manifesto">
+        <div class="manifesto-layout">
+          <div class="manifesto-lead"><h2>We believe<br />a career should<br /><em>compound.</em></h2><p>Not just in title. In range, judgement, people and the problems you learn to take on.</p></div>
+          <article class="manifesto-paper" aria-label="8x manifesto document">
+            <header><span>8x / working paper</span><span>001—006</span></header>
+            <div class="paper-progress"><i></i></div>
+            <div class="paper-scroll" id="manifesto-scroll">
+              <p class="paper-kicker">A note on how we work</p>
+              <h3>Ambition is not a job title.</h3>
+              <p>It is the decision to keep learning the shape of a problem until you can move it. It is care for the finish, and nerve at the beginning.</p>
+              <hr />
+              <h3>We make room for agency.</h3>
+              <p>The point is not to wait for a perfect brief. The point is to notice what matters, bring a point of view, and own the next useful move.</p>
+              <hr />
+              <h3>Great work leaves a trail.</h3>
+              <p>In people becoming sharper. In teams becoming braver. In things that are now possible because someone cared enough to make them real.</p>
+              <p class="paper-signoff">— 8x, for the people still choosing.</p>
+            </div>
+            <footer><span>Keep scrolling</span><span>8x.life</span></footer>
+          </article>
+        </div>
+      </section>
+
+      <section class="wise-section section-pad" id="wise">
+        <div class="wise-heading"><h2>The <em>wise<br />ones.</em></h2><p>Two co-founders. One shared instinct for doing things differently.</p></div>
+        <div class="team-grid" id="team-grid"></div>
+        <p class="section-footnote">Less a corporate org chart. More a collection of people worth learning from.</p>
+      </section>
+
+      <section class="builds-section section-pad" id="builds">
+        <div class="builds-heading"><h2>What we<br /><em>build.</em></h2><p>Different expressions of one idea: make the work around us more possible, more human, more alive.</p></div>
+        <div class="build-deck" id="build-deck"></div>
+        <div class="deck-hint"><span>←</span> pull a card <span>→</span></div>
+      </section>
+
+      <section class="hero-selector section-pad" id="hero-selector">
+        <div class="selector-copy"><h2>Choose<br />your <em>character.</em></h2><p>There is no perfect profile. But there are ways of showing up that make more possible.</p></div>
+        <div class="character-machine"><div class="machine-top"><span>Player select</span><span>Pick a power</span></div><div class="character-shell"><div class="character-orbit"></div><div class="character-mark">8<span>x</span></div><div class="traits" id="traits" role="list"></div></div><div class="selected-trait" aria-live="polite"><span>Active ability</span><strong id="selected-trait">Choose a power</strong><p id="selected-description">There’s no right answer. The signal is whether you recognise yourself in the work.</p></div></div>
+      </section>
+
+      <section class="rules-section section-pad" id="rules">
+        <div class="rules-top"><h2>But, every game<br />has <em>rules.</em></h2><p>This is an honest part. The freedom here is real. So is the expectation that you’ll know what to do with it.</p></div>
+        <div class="rules-list" id="rules-list"></div>
+        <p class="rules-note">If this gives you a useful kind of pause, we respect that too.</p>
+      </section>
+
+      <section class="final-cta section-pad">
+        <div class="final-orbit"></div><p class="eyebrow">The next move is yours</p><h2>Your<br /><em>move.</em></h2><p class="choose">Choose wisely.</p>
+        <div class="final-choices"><a href="https://8x.careers" target="_blank" rel="noreferrer"><span>01</span><strong>Join the platform</strong><b>↗</b><small>Explore opportunities and make an impact.</small></a><button class="network-trigger" type="button"><span>02</span><strong>Join the network</strong><b>+</b><small>Find a doorway into the wider 8x world.</small></button></div>
+        <footer><a href="#top">8x.life ↑</a><span>Choose a thing worth making real.</span><a href="https://8x.careers" target="_blank" rel="noreferrer">Careers ↗</a></footer>
+      </section>
+    </main>
+    <dialog class="network-dialog" id="network-dialog" aria-label="Join the 8x network">
+      <button class="close-dialog" aria-label="Close network deck" type="button">×</button>
+      <div class="network-title"><p class="eyebrow">The network / choose an opening</p><h2>There is more<br />than <em>one way in.</em></h2><p>Start with the doorway that makes sense for you. The rest can follow.</p></div>
+      <div class="network-cards" id="network-cards"></div>
+      <p class="network-foot">Press escape to return to the field.</p>
+    </dialog>
+    <script src="./app.js"></script>
+  </body>
+</html>
